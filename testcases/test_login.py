@@ -1,5 +1,4 @@
 import pytest
-from conftest import browser
 from pages.loginpage import LoginPage
 
 
@@ -21,6 +20,3 @@ class TestLogin:
         error_message = login_page.is_error_message_displayed()
 
         assert error_message
-
-
-

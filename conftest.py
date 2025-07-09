@@ -7,7 +7,8 @@ from datetime import datetime
 
 
 # def pytest_addoption(parser):
-#    parser.addoption("--headless", action="store_true", help="Run browser in headless mode")
+#    parser.addoption("--headless", action="store_true",
+#                      help="Run browser in headless mode")
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -33,7 +34,8 @@ def browser(request):
     #    chrome_options.add_argument("--disable-gpu")
     #    chrome_options.add_argument("--window-size=1920,1080")
 
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(),
+                              options=chrome_options)
     driver.maximize_window()
     driver.implicitly_wait(5)
     yield driver
