@@ -32,3 +32,6 @@ class LoginPage(BasePage):
 
     def is_error_message_displayed(self) -> bool:
         return self.is_displayed(self.error_message_locator)
+
+    def error_text_message(self):
+        return self.get_text(self.error_message_locator)
