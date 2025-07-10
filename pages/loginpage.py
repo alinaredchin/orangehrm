@@ -8,7 +8,7 @@ class LoginPage(BasePage):
     username_locator = (By.NAME, 'username')
     password_locator = (By.NAME, 'password')
     login_locator = (By.XPATH, '//button')
-    error_message_locator = (By.CLASS_NAME, 'oxd-alert oxd-alert--error')
+    error_message_locator = (By.CSS_SELECTOR, '.oxd-alert.oxd-alert--error')
 
     Expected_url = (
         "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
@@ -19,7 +19,6 @@ class LoginPage(BasePage):
 
     def login(self, username, password):
         self.open(BaseUrl)
-        # we use 'self' before login_locator because its in the same class
         self.enter(self.username_locator, username)
         self.enter(self.password_locator, password)
         self.click(self.login_locator)
@@ -31,5 +30,5 @@ class LoginPage(BasePage):
     def get_current_url(self):
         return super().current_url
 
-    def is_error_message_displayed(self):
+    def is_error_message_displayed(self) -> bool:
         return self.is_displayed(self.error_message_locator)

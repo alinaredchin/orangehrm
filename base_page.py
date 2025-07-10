@@ -1,4 +1,4 @@
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
@@ -17,7 +17,7 @@ class BasePage:
         return self.driver.find_element(*locator)
 
     def enter(self, locator, text: str, time: int = 10):
-        self.wait_until_element_is_visible(locator, time)
+        self.wait_until_element_is_visible(time, locator)
         self.find(locator).send_keys(text)
 
     def click(self, locator):
@@ -39,5 +39,5 @@ class BasePage:
     def is_displayed(self, locator) -> bool:
         try:
             return self.find(locator).is_displayed()
-        except NoSuchElementException:
+        except (NoSuchElementException, TimeoutException):
             return False
