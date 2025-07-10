@@ -22,8 +22,7 @@ class PasswordResetPage(BasePage):
         self.enter(self.Username_locator, username)
         self.click(self.Reset_Password_locator)
 
-    def cancel_password_reset(self, username):
-        self.enter(self.Username_locator, username)
+    def cancel_password_reset(self):
         self.click(self.Cancel_password_reset_locator)
 
     def error_message_is_displayed(self):
