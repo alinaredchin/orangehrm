@@ -1,6 +1,4 @@
-import pytest
 from pages.loginpage import LoginPage
-from conftest import driver
 
 
 class TestLogin:
@@ -18,5 +16,3 @@ class TestLogin:
         login_page.login("Invalid login", "invalidpassword123")
 
         assert login_page.is_error_message_displayed()
-
-

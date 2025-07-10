@@ -1,7 +1,6 @@
 from pathlib import Path
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import ChromiumOptions
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime
 
@@ -28,7 +27,7 @@ def pytest_html_report_title(report):
 @pytest.fixture
 def driver():
     options = webdriver.ChromeOptions()
-    #options.add_argument("--headless=new")
+    # options.add_argument("--headless=new")
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.maximize_window()
     driver.implicitly_wait(5)
