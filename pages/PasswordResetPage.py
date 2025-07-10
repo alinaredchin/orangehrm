@@ -1,15 +1,18 @@
 from base_page import BasePage
 from selenium.webdriver.common.by import By
-from urls import Password_reset_page_url, BaseUrl
+from urls import BaseUrl
 
 
 class PasswordResetPage(BasePage):
-    Forgot_password_locator = (By.XPATH, "//p[contains(@class,'orangehrm-login-forgot-header')]")
-    Username_locator = (By.NAME, "username")
-    Reset_Password_locator = (By.XPATH, "//button[text()=' Reset Password ']")
+    Forgot_password_locator = (By.XPATH,
+                               "//p[contains(@class,'orangehrm-login-forgot-header')]")
+    Username_locator = (By.NAME, 'username')
+    Reset_Password_locator = (By.XPATH, "//button[text()='Reset Password']")
     Cancel_password_reset_locator = (By.XPATH, "//button[text()=' Cancel ']")
     Error_message_locator = (By.XPATH, "//span[text()='Required']")
-    Password_reset_modal_locator = (By.XPATH, "//h6[contains(@class,'orangehrm-forgot-password-title')]")
+    Password_reset_modal_locator = (By.XPATH,
+                                    "//h6[contains(@class,'"
+                                    "orangehrm-forgot-password-title')]")
 
     def click_forgot_password_the_link(self):
         self.open(BaseUrl)

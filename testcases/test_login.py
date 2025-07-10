@@ -33,5 +33,6 @@ class TestLogin:
         login_page.click_forgot_you_password()
         current_url = login_page.get_current_url()
 
-        assert current_url == ("https://opensource-demo.orangehrmlive.com/web/index.php/auth"
-                               "/requestPasswordResetCode")
+        expected_url = ("https://opensource-demo.orangehrmlive.com/web/index.php/auth"
+                        "/requestPasswordResetCode")
+        assert current_url == expected_url

@@ -37,4 +37,3 @@ class LoginPage(BasePage):
 
     def click_forgot_you_password(self):
         self.click(self.forgot_your_password_locator)
-
