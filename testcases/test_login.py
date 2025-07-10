@@ -16,3 +16,6 @@ class TestLogin:
         login_page.login("Invalid login", "invalidpassword123")
 
         assert login_page.is_error_message_displayed()
+
+    def test_error_message(self, driver):
+        
