@@ -7,7 +7,7 @@ class PasswordResetPage(BasePage):
     Forgot_password_locator = (By.XPATH,
                                "//p[contains(@class,'orangehrm-login-forgot-header')]")
     Username_locator = (By.NAME, 'username')
-    Reset_Password_locator = (By.XPATH, "//button[text()='Reset Password']")
+    Reset_Password_locator = (By.XPATH, "//button[@type='submit']")
     Cancel_password_reset_locator = (By.XPATH, "//button[text()=' Cancel ']")
     Error_message_locator = (By.XPATH, "//span[text()='Required']")
     Password_reset_modal_locator = (By.XPATH,
