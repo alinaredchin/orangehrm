@@ -22,4 +22,3 @@ class TestPasswordReset:
         password_reset_page.cancel_password_reset()
         current_page = password_reset_page.current_url
         assert current_page == urls.BaseUrl
-
