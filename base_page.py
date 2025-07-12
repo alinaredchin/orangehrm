@@ -33,6 +33,10 @@ class BasePage:
         except (NoSuchElementException, TimeoutException):
             return False
 
+    def wait_until_element_is_invisible(self, time, locator):
+        wait = WebDriverWait(self.driver, time)
+        return wait.until(EC.invisibility_of_element_located(locator))
+
     def wait_until_all_elements_are_visible(self, time, locator):
         wait = WebDriverWait(self.driver, time)
         try:

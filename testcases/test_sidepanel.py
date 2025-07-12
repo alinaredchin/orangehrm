@@ -16,14 +16,12 @@ class TestSidepanel:
         sidepanel.hide_the_sidepanel()
         assert sidepanel.is_sidepanel_collapsed()
 
-    def test_only_icons_are_displayed_in_collapsed_menu(self, driver):
+    def test_nav_items_names_are_hidden_when_menu_is_collapsed(self, driver):
         sidepanel = Sidepanel(driver)
         sidepanel.open_the_link()
         sidepanel.login("Admin", "admin123")
         sidepanel.hide_the_sidepanel()
-        items = sidepanel.get_list_of_items()
-        for item in items:
-            assert "toggle" in item.get_attribute("class")
+        assert sidepanel.nav_items_names_are_hidden()
 
     def test_search_field(self, driver):
         sidepanel = Sidepanel(driver)
