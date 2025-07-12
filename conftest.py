@@ -33,7 +33,6 @@ def driver():
     options.add_argument("--no-sandbox")  # Needed in many CI environments
     options.add_argument("--disable-dev-shm-usage")  # Prevent shared memory issues
     options.add_argument("--window-size=1920,1080")
-
     service = ChromeService(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     driver.implicitly_wait(5)

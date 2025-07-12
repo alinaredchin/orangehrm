@@ -46,6 +46,7 @@ class BasePage:
 
     @property
     def current_url(self) -> str:
+        self.driver.implicitly_wait(10)
         return self.driver.current_url
 
     def get_text(self, locator):
@@ -58,9 +59,13 @@ class BasePage:
         except (NoSuchElementException, TimeoutException):
             return False
 
-    def is_clickable(self, time, locator):
-        wait = WebDriverWait(self.driver, time)
+    def is_clickable(self, locator):
+        wait = WebDriverWait(self.driver, 5)
         try:
             return wait.until(EC.element_to_be_clickable(locator))
         except (NoSuchElementException, TimeoutException):
             return False
+
+    def switch_to_a_new_tab(self):
+        new_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_window)

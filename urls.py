@@ -6,3 +6,4 @@ Password_reset_page_url = (
     "https://opensource-demo.orangehrmlive.com/web/index.php/"
     "auth/requestPasswordResetCode"
 )
+Upgrade_page_url = "https://orangehrm.com/open-source/upgrade-to-advanced"
