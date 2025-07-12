@@ -7,9 +7,9 @@ from datetime import datetime
 from selenium.webdriver.chrome.service import Service as ChromeService
 
 
-# def pytest_addoption(parser):
-#     parser.addoption("--headless", action="store_true",
-#                      help="Run browser in headless mode")
+def pytest_addoption(parser):
+    parser.addoption("--headless", action="store_true",
+                     help="Run browser in headless mode")
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -29,7 +29,7 @@ def pytest_html_report_title(report):
 @pytest.fixture
 def driver():
     options = Options()
-    # options.add_argument("--headless=new")  # Use headless mode in CI
+    options.add_argument("--headless=new")  # Use headless mode in CI
     options.add_argument("--no-sandbox")  # Needed in many CI environments
     options.add_argument("--disable-dev-shm-usage")  # Prevent shared memory issues
     options.add_argument("--window-size=1920,1080")
