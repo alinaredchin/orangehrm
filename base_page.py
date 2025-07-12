@@ -16,8 +16,7 @@ class BasePage:
         self.wait_until_element_is_visible(10, locator)
         return self.driver.find_element(*locator)
 
-    def enter(self, locator, text: str, time: int = 10):
-        self.wait_until_element_is_visible(time, locator)
+    def enter(self, locator, text: str):
         self.find(locator).send_keys(text)
 
     def click(self, locator):
@@ -28,6 +27,13 @@ class BasePage:
         wait = WebDriverWait(self.driver, time)
         try:
             return wait.until(EC.visibility_of_element_located(locator))
+        except (NoSuchElementException, TimeoutException):
+            return False
+
+    def wait_until_all_elements_are_visible(self, time, locator):
+        wait = WebDriverWait(self.driver, time)
+        try:
+            return wait.until(EC.visibility_of_all_elements_located(locator))
         except (NoSuchElementException, TimeoutException):
             return False
 
@@ -42,5 +48,12 @@ class BasePage:
     def is_displayed(self, locator) -> bool:
         try:
             return self.find(locator).is_displayed()
+        except (NoSuchElementException, TimeoutException):
+            return False
+
+    def is_clickable(self, time, locator):
+        wait = WebDriverWait(self.driver, time)
+        try:
+            return wait.until(EC.element_to_be_clickable(locator))
         except (NoSuchElementException, TimeoutException):
             return False

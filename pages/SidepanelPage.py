@@ -9,6 +9,8 @@ class Sidepanel(LoginPage):
         By.XPATH, "//button[contains(@class,'oxd-main-menu-button')]"
     )
     Sidepanel_closed_locator = (By.XPATH, "//aside[@class='oxd-sidepanel']")
+    Search_field_locator = (By.XPATH, "//input[contains(@class,'oxd-input')]")
+    Sidepanel_menu = (By.XPATH, "//ul[@class='oxd-main-menu']")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -16,11 +18,15 @@ class Sidepanel(LoginPage):
     def open_the_link(self):
         self.open(BaseUrl)
 
-    def is_element_present(self):
-        return self.is_displayed(self.Sidepanel_locator)
-
     def hide_the_sidepanel(self):
         self.click(self.Sidepanel_button_locator)
 
     def is_sidepanel_collapsed(self):
         return self.is_displayed(self.Sidepanel_closed_locator)
+
+    def is_search_field_clickable(self):
+        return self.is_clickable(5, self.Search_field_locator)
+
+    def search(self, text):
+        self.is_clickable(5, self.Search_field_locator)
+        self.enter(self.Search_field_locator, text)
