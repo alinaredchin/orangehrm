@@ -14,7 +14,7 @@ class Sidepanel(LoginPage):
     Search_field_locator = (By.XPATH, "//input[contains(@class,'oxd-input')]")
     Sidepanel_menu = (By.XPATH, "//ul[@class='oxd-main-menu']")
     Sidepanel_items = (
-        By.XPATH, "//a[contains(@class,'toggle')][contains(@class,'menu-item')]"
+        By.XPATH, "//span[contains(@class,'oxd-main-menu-item--name')]"
     )
 
     def __init__(self, driver):
@@ -38,5 +38,7 @@ class Sidepanel(LoginPage):
 
     def get_list_of_items(self):
         items = self.find_all(self.Sidepanel_items)
-        print(items)
         return items
+
+    def nav_items_names_are_hidden(self):
+        return self.wait_until_element_is_invisible(5, self.Sidepanel_items)
