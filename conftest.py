@@ -36,7 +36,7 @@ def driver():
 
     service = ChromeService(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
-    # driver.maximize_window()
     driver.implicitly_wait(5)
     yield driver
     driver.quit()
+    
