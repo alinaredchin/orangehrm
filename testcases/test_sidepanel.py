@@ -6,7 +6,7 @@ class TestSidepanel:
     def test_sidepanel_is_present(self, driver):
         sidepanel = Sidepanel(driver)
         sidepanel.open_the_link()
-        sidepanel.login("Admin", "admin123")
+        sidepanel.login()
         assert sidepanel.is_displayed(sidepanel.Sidepanel_locator)
 
     def test_close_sidepanel(self, driver):
